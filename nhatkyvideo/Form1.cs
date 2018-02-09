@@ -16,8 +16,8 @@ namespace nhatkyvideo
         const int WM_NCHITTEST = 0x84;
         const int HTCLIENT = 0x1;
         const int HTCAPTION = 0x2;
-        string formsach= @"D:\DPT\nhatkyvideo\nhatkyvideo\nhatkyvideo\img\biasach0.png";
-        int biasach = 0;
+        string formsach= @"D:\DPT\nhatkyvideo\nhatkyvideo\nhatkyvideo\img\biasach1.png";
+        int biasach = 1;
         public Form1()
         {
            
@@ -38,13 +38,17 @@ namespace nhatkyvideo
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (biasach <=6)
+            if (biasach <=24)
             {
-                biasach++;
+                
 
                 formsach = @"D:\DPT\nhatkyvideo\nhatkyvideo\nhatkyvideo\img\biasach" + biasach.ToString() + ".png";
                 Bitmap bmForm = new Bitmap(formsach);
-                BitmapRegion.CreateRegion(this, bmForm);
+                this.Height = bmForm.Height + 10;
+                this.Width = bmForm.Width + 10;
+                BitmapRegion.CreateRegion(pictureBox1, bmForm);
+                pictureBox1.Image = bmForm;
+                biasach++;
             }
             else
             {
@@ -58,7 +62,7 @@ namespace nhatkyvideo
         private void Form1_Load(object sender, EventArgs e)
         {
             Bitmap bmForm = new Bitmap(formsach);
-            BitmapRegion.CreateRegion(this, bmForm);
+          //  BitmapRegion.CreateRegion(this, bmForm);
             timer1.Start();
         }
     }
