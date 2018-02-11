@@ -23,7 +23,7 @@ namespace nhatkyvideo
         const int WM_NCHITTEST = 0x84;
         const int HTCLIENT = 0x1;
         const int HTCAPTION = 0x2;
-        string formsach= @"D:\DPT\nhatkyvideo\nhatkyvideo\nhatkyvideo\img\biasach1.png";
+        string formsach= @"C:\Users\admin\Source\Repos\nhatkyvideo\nhatkyvideo\img\biasach1.png";
         int biasach = 1;
         string thumuc = Directory.GetCurrentDirectory();
         DataTable db;
