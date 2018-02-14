@@ -13,6 +13,10 @@ namespace nhatkyvideo
 {
     public partial class Form1 : Form
     {
+        private bool nope1 = true;
+        private bool nope2 = true;
+        private bool run1 = false;
+        private bool run2 = false;
         private const int WM_APP = 0x8000;
         private const int WM_GRAPHNOTIFY = WM_APP + 1;
         private const int EC_COMPLETE = 0x01;
@@ -37,7 +41,7 @@ namespace nhatkyvideo
         {
           
            thumuc= thumuc.Remove(thumuc.Length - 10, 10);
-            InitializeComponent();
+            InitializeComponent(); formsach = thumuc + @"\img\biasach1" + ".png";
             db = DBSQLServerUtils.getdata("select * from AnhDong ad join GhiChu gc on ad.IDanhdong=gc.IDanhdong join Video vd   on vd.IDvideo=gc.IDvideo ");
             Bitmap bmcntrol = new Bitmap(thumuc + @"\ico\if_icon-gear-a_211669.png");
             BitmapRegion.CreateRegion(btn_control1,bmcntrol);
@@ -85,6 +89,7 @@ namespace nhatkyvideo
             timer1.Start();
             string a = db.Rows[0][9].ToString();
             FilgraphManager graphManager = new FilgraphManager();
+            if (db.Rows[0][9] != null || db.Rows[0][9] != "") ;
             graphManager.RenderFile(db.Rows[0][9].ToString());
 
             // Gắn cửa sổ video vào PictureBox trên form.             
@@ -127,6 +132,45 @@ namespace nhatkyvideo
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ptb_1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ptb_1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ckb_time2_Click(object sender, EventArgs e)
+        {
+            if (nope1 != true)
+            {
+                if (run1 == true)
+                {
+                    mc.Pause();
+                    run1 = false;
+                }
+
+                else
+                {
+                    mc.Run();
+                    run1 = true;
+                }
+
+            }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_minus_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
